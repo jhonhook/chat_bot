@@ -52,7 +52,7 @@ def get_response(ints, intents_json):
 
 # Streamlit UI setup
 st.set_page_config(page_title="Financial Assistant Chatbot", page_icon=":speech_balloon:")
-st.title("\ud83d\udcac Financial Assistant Chatbot")
+st.title(":speech_balloon: Financial Assistant Chatbot")
 st.markdown("Chat with the assistant by typing below.")
 
 # Chat state initialization
