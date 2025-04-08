@@ -1,0 +1,6 @@
+streamlit
+nltk
+numpy
+keras
+tensorflow
+pickle-mixin
