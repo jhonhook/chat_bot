@@ -7,6 +7,8 @@ import numpy as np
 from keras.models import load_model
 import streamlit as st
 
+nltk.download('punkt')
+
 # Load necessary resources
 lemmatizer = WordNetLemmatizer()
 model = load_model('chatbot_model.h5')
