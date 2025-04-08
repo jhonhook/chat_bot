@@ -6,8 +6,18 @@ import pickle
 import numpy as np
 from keras.models import load_model
 import streamlit as st
+import os
+import shutil
 
-nltk.download('punkt')
+# Force re-download of the correct 'punkt' tokenizer if needed
+try:
+    punkt_path = os.path.join(nltk.data.find('tokenizers/punkt').path, 'punkt')
+    if os.path.exists(punkt_path):
+        shutil.rmtree(punkt_path)
+except LookupError:
+    pass  # If the 'punkt' tokenizer isn't found, we continue with the download
+
+nltk.download('punkt')  # Correct 'punkt' tokenizer download
 
 # Load necessary resources
 lemmatizer = WordNetLemmatizer()
