@@ -10,7 +10,7 @@ import os
 import shutil
 
 # Force download of the correct 'punkt' tokenizer if needed
-def ensure punkt_download():
+def ensure_punkt_download():
     try:
         # Check if punkt is already installed
         nltk.data.find('tokenizers/punkt')
@@ -25,6 +25,7 @@ def ensure punkt_download():
 
         # Now download the correct 'punkt'
         nltk.download('punkt')
+
 
 # Force the punkt download to ensure no issues
 ensure_punkt_download()
