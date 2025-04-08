@@ -24,8 +24,7 @@ def ensure_punkt_download():
             pass  # If it's already gone, continue
 
         # Now download the correct 'punkt'
-        nltk.download('punkt')
-
+        nltk.download('punkt')  # Ensure the correct resource is downloaded
 
 # Force the punkt download to ensure no issues
 ensure_punkt_download()
