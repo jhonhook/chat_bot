@@ -9,15 +9,25 @@ import streamlit as st
 import os
 import shutil
 
-# Force re-download of the correct 'punkt' tokenizer if needed
-try:
-    punkt_path = os.path.join(nltk.data.find('tokenizers/punkt').path, 'punkt')
-    if os.path.exists(punkt_path):
-        shutil.rmtree(punkt_path)
-except LookupError:
-    pass  # If the 'punkt' tokenizer isn't found, we continue with the download
+# Force download of the correct 'punkt' tokenizer if needed
+def ensure punkt_download():
+    try:
+        # Check if punkt is already installed
+        nltk.data.find('tokenizers/punkt')
+    except LookupError:
+        # Remove any broken or incorrect punkt if needed
+        try:
+            punkt_path = os.path.join(nltk.data.find('tokenizers').path, 'punkt')
+            if os.path.exists(punkt_path):
+                shutil.rmtree(punkt_path)
+        except LookupError:
+            pass  # If it's already gone, continue
 
-nltk.download('punkt')  # Correct 'punkt' tokenizer download
+        # Now download the correct 'punkt'
+        nltk.download('punkt')
+
+# Force the punkt download to ensure no issues
+ensure_punkt_download()
 
 # Load necessary resources
 lemmatizer = WordNetLemmatizer()
